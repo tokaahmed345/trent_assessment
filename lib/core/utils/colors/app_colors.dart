@@ -1,73 +1,50 @@
-
-// import 'package:flutter/material.dart';
-
-// abstract  class AppColors {
-// static const Color whiteColor = Colors.white;
-// static const Color blackColor=Colors.black;
-// static const darkBlue=Color(0xff003851);
-// static const secondary= Color(0xFF0A1E3F);
-// static Color? primary=Colors.blue[900];
-//  static Color? blueGrey=  Colors.blueGrey[800];
-//  static Color grey=  Colors.grey;
-
-// static const redColor= Colors.red;
-// static const blueColor= Colors.blue;
-// static const transparent= Colors.transparent;
-
-
-
-//   static const Color primaryDark = Color(0xff020617);
-
-//   static const Color lightBackground = Color(0xffF6F7FB);
-//   static const Color tipsBackground = Color(0xffEEF2FF);
-
-//   static const  greenColor = Colors.green;
-// }
-
 import 'package:flutter/material.dart';
 
 abstract class AppColors {
-  static const  redColor = Colors.red;
-  
-  static const Color blueColor = Colors.blue;
-  static const Color transparent = Colors.transparent;
-  static const  greenColor = Colors.green;
-  static const Color blackColor = Colors.black;
+  static const Color primary = Color(0xFF27989E);
+  static const Color primaryDark = Color(0xFF1B6F63);
+  static const Color primaryLight = Color(0xFFE3F3F1);
+
   static const Color whiteColor = Colors.white;
-  static const darkBlue = Color(0xff003851);
-  static const secondary = Color(0xFF0A1E3F);
-  static Color? primary = Colors.blue[900];
-  static Color? blueGrey = Colors.blueGrey[800];
-  static Color grey = Colors.grey;
-  static const Color primaryDark = Color(0xff020617);
-  static const Color lightBackground = Color(0xffF6F7FB);
-  static const Color tipsBackground = Color(0xffEEF2FF);
+  static const Color blackColor = Colors.black;
+  static const Color transparent = Colors.transparent;
+
+  static const Color redColor = Colors.red;
+  static const Color greenColor = Colors.green;
+  static const Color orangeColor = Color(0xFFF5A623);
+  static const Color favoriteRed = Color(0xFFFF4757);
+  static const Color greyColor = Color(0xFF9E9E9E);
+
+  // Light mode
+  static const Color lightBackground = Color(0xFFF6F7FB);
+  static const Color lightSurface = Colors.white;
+  static const Color lightTextPrimary = Color(0xFF1A1A1A);
+  static const Color lightTextSecondary = Color(0xFF8E8E93);
+  static const Color lightBorder = Color(0xFFEAEAEA);
+
+  // Dark mode
+  static const Color darkBackground = Color(0xFF0D1B1A);
+  static const Color darkSurface = Color(0xFF132825);
+  static const Color darkTextPrimary = Color(0xFFEDEDED);
+  static const Color darkTextSecondary = Color(0xFFA0A0A0);
+  static const Color darkBorder = Color(0xFF1F3B37);
 }
 
 extension AppColorsExtension on BuildContext {
-  bool get _isDark => Theme.of(this).brightness == Brightness.dark;
+  bool get isDark => Theme.of(this).brightness == Brightness.dark;
 
   Color get backgroundColor =>
-      _isDark ? const Color(0xff020617) : const Color(0xffF6F7FB);
+      isDark ? AppColors.darkBackground : AppColors.lightBackground;
 
   Color get surfaceColor =>
-      _isDark ? const Color(0xff0D1B2A) : Colors.white;
+      isDark ? AppColors.darkSurface : AppColors.lightSurface;
 
-  Color get primaryTextColor =>
-      _isDark ? const Color(0xffE8EAF0) : const Color(0xff003851);
+  Color get textPrimary =>
+      isDark ? AppColors.darkTextPrimary : AppColors.lightTextPrimary;
 
-  Color get secondaryColor =>
-      _isDark ? const Color(0xff1A3A5C) : const Color(0xFF0A1E3F);
+  Color get textSecondary =>
+      isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary;
 
-  Color get primaryColor =>
-      _isDark ? Colors.blue[300]! : Colors.blue[900]!;
-
-  Color get blueGreyColor =>
-      _isDark ? Colors.blueGrey[300]! : Colors.blueGrey[800]!;
-
-  Color get greyColor =>
-      _isDark ? Colors.grey[400]! : Colors.grey;
-
-  Color get tipsBackgroundColor =>
-      _isDark ? const Color(0xff1A1F3A) : const Color(0xffEEF2FF);
+  Color get borderColor =>
+      isDark ? AppColors.darkBorder : AppColors.lightBorder;
 }
