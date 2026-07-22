@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:trent_assessment/core/utils/colors/app_colors.dart';
@@ -51,13 +52,20 @@ class ProductCard extends StatelessWidget {
                   borderRadius: const BorderRadius.vertical(
                     top: Radius.circular(12),
                   ),
-                  child: Image.network(
-                    product.imageUrl,
+                  child: CachedNetworkImage(
+                    imageUrl: product.imageUrl,
                     height: 110,
                     width: double.infinity,
                     fit: BoxFit.cover,
-                    errorBuilder: (context, error, stackTrace) => Container(
+                    placeholder: (context, url) => Container(
                       height: 110,
+                      width: double.infinity,
+                      color: AppColors.primaryLight,
+                      child: const Center(child: CircularProgressIndicator()),
+                    ),
+                    errorWidget: (context, url, error) => Container(
+                      height: 110,
+                      width: double.infinity,
                       color: AppColors.primaryLight,
                       child: const Icon(
                         Icons.chair,
